@@ -86,7 +86,7 @@ const TicketPage = () => {
                 value={1}
                 checked={formData.priority === 1}
               />
-              <label htmlFor="priority-2">2</label>
+              <label htmlFor="priority-1">1</label>
               <input
                 id="priority-2"
                 name="priority"
@@ -95,7 +95,7 @@ const TicketPage = () => {
                 value={2}
                 checked={formData.priority === 2}
               />
-              <label htmlFor="priority-3">3</label>
+              <label htmlFor="priority-2">2</label>
               <input
                 id="priority-3"
                 name="priority"
@@ -104,7 +104,7 @@ const TicketPage = () => {
                 value={3}
                 checked={formData.priority === 3}
               />
-              <label htmlFor="priority-4">4</label>
+              <label htmlFor="priority-3">3</label>
               <input
                 id="priority-4"
                 name="priority"
@@ -113,7 +113,7 @@ const TicketPage = () => {
                 value={4}
                 checked={formData.priority === 4}
               />
-              <label htmlFor="priority-5">5</label>
+              <label htmlFor="priority-4">4</label>
               <input
                 id="priority-5"
                 name="priority"
@@ -122,21 +122,79 @@ const TicketPage = () => {
                 value={1}
                 checked={formData.priority === 5}
               />
-              <label htmlFor="priority-5">1</label>
+              <label htmlFor="priority-5">5</label>
             </div>
 
-            <input 
-              type="range" 
-              id="progress"
-              name="progress"
-              value={formData.progress}
-              min="0"
-              max="100"
+            {editMode && (
+              <>
+                <input
+                  type="range"
+                  id="progress"
+                  name="progress"
+                  value={formData.progress}
+                  min="0"
+                  max="100"
+                  onChange={handleChange}
+                />
+
+                <label htmlFor="progress">Progress</label>
+
+                <label htmlFor="">Status</label>
+                <select
+                  name="status"
+                  value={formData.status}
+                  onChange={handleChange}
+                >
+                  <option selected={formData.status === "done"} value="done">
+                    Done
+                  </option>
+                  <option
+                    selected={formData.status === "working on it"}
+                    value="working on it"
+                  >
+                    Working on it
+                  </option>
+                  <option selected={formData.status === "stuck"} value="stuck">
+                    Stuck
+                  </option>
+                  <option
+                    selected={formData.status === "not started"}
+                    value="not started"
+                  >
+                    Not Started
+                  </option>
+                </select>
+              </>
+            )}
+
+            <input type="submit" />
+          </section>
+
+          <section>
+            <label htmlFor="owner">Owner</label>
+            <input
+              id="owner"
+              name="owner"
+              type="text"
               onChange={handleChange}
+              required={true}
+              value={formData.owner}
+            />
+            <label htmlFor="avatar">Avatar</label>
+            <input
+              id="avatar"
+              name="avatar"
+              type="url"
+              onChange={handleChange}
+              required={true}
+              value={formData.avatar}
             />
 
-            <label htmlFor="progress">Progress</label>
-
+            <div className="img-preview">
+              {formData.avatar && (
+                <img src={formData.avatar} alt="image preview" />
+              )}
+            </div>
           </section>
         </form>
       </div>
