@@ -17,9 +17,14 @@ const StatusDisplay = ({ status }) => {
     return color;
   };
 
-  return <div className="status-display" style={{ backgroundColor: getColor(status) }}>
-    {status}
-  </div>
+  return (
+    <div
+      className="status-display"
+      style={{ backgroundColor: getColor(status) }}
+    >
+      {status}
+    </div>
+  );
 };
 
 export default StatusDisplay;

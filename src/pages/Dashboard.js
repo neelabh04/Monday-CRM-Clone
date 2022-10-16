@@ -24,7 +24,7 @@ const Dashboard = () => {
       avatar:
         "https://media-exp1.licdn.com/dms/image/C5603AQHz0XsNvXLBhw/profile-displayphoto-shrink_400_400/0/1610123921178?e=1671667200&v=beta&t=a6m1xm8f2Kte0nzH3a_qrDhIx_y6QYPZ5OaC1iKORwc",
       status: "working on it",
-      priority: 5,
+      priority: 2,
       progress: 70,
       description: "Make a video about AI",
       timestamp: "2022-02-13T07:36:17+0000",
@@ -44,6 +44,15 @@ const Dashboard = () => {
     },
   ];
 
+  const colors = [
+    'rgb(255, 179, 186)',
+    'rgb(255, 223, 186)',
+    'rgb(255, 255, 186)',
+    'rgb(186, 255, 201)',
+    'rgb(186, 255, 255)'
+  ]
+
+
   const uniqueCategories = [
     ...new Set(tickets?.map(({ category }) => category)),
   ];
@@ -61,9 +70,9 @@ const Dashboard = () => {
               {tickets
                 .filter((ticket) => ticket.category === uniqueCategory)
                 .map((filteredTicket, _index) => (
-                  <TicketCard 
+                  <TicketCard
                     id={_index}
-                    color={filteredTicket.color}
+                    color={colors[categoryIndex] || colors[0]}
                     ticket={filteredTicket}
                   />
                 ))}
