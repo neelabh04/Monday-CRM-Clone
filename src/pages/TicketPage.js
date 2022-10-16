@@ -192,7 +192,7 @@ const TicketPage = () => {
 
             <div className="img-preview">
               {formData.avatar && (
-                <img src={formData.avatar} alt="image preview" />
+                <img src={formData.avatar} alt="avatar display" />
               )}
             </div>
           </section>
